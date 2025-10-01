@@ -7,7 +7,7 @@ It helps you **weave access control policies** into your routes using simple, ru
 
 - 🔑 **Declarative rules** with allow / deny effects.
 
-- 🎯 **Resource-based access** with wildcards (\*).
+- 🎯 **Resource-based access** with wildcards (*).
 
 - ⚡ **Express.js middleware** with simple setup.
 
@@ -25,7 +25,7 @@ yarn add access-weaver
 
 ## ⚡ Quick Start
 
-### 1\. Define Policies
+### 1. Define Policies
 
 Policies are collections of **flow rules**:
 

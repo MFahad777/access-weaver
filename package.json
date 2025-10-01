@@ -1,14 +1,28 @@
 {
   "name": "access-weaver",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A lightweight and flexible access control middleware for Node.js and Express, supporting policy-based authorization",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "build": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Muhammad Fahad",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MFahad777/access-weaver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MFahad777/access-weaver/issues"
+  },
+  "homepage": "https://github.com/MFahad777/access-weaver#readme",
+  "keywords": [
+    "authorization",
+    "access-control",
+    "permissions",
+    "secure-api"
+  ],
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
@@ -20,5 +34,8 @@
     "ts-jest": "^29.4.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
-  }
+  },
+  "files": [
+    "dist/**/*"
+  ]
 }

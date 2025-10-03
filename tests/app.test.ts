@@ -5,98 +5,66 @@ import { Policy } from "../dist";
 
 const allowInvoiceRead: Policy = [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "invoice.read",
-                target: "invoice:*",
-            },
-        ],
+        effect: "allow",
+        action: "invoice.read",
+        target: "invoice:*",
     },
 ];
 
 const allowInvoiceUpdate: Policy = [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "invoice.update",
-                target: "invoice:*",
-            },
-        ],
+        effect: "allow",
+        action: "invoice.update",
+        target: "invoice:*",
     },
 ];
 
-const allowInvoiceSingleUpdate: Policy = [
+const allowInvoiceSingleUpdate: Policy =  [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "invoice.update",
-                target: "invoice:787",
-            },
-        ],
+        effect: "allow",
+        action: "invoice.update",
+        target: "invoice:787",
     },
 ];
 
 const denyInvoiceRead: Policy = [
     {
-        flow: [
-            {
-                effect: "deny",
-                action: "invoice.read",
-                target: "invoice:*",
-            },
-        ],
+        effect: "deny",
+        action: "invoice.read",
+        target: "invoice:*",
     },
 ];
 
 const allowUserDeleteWithSpecificId: Policy = [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "users.delete",
-                target: "users:101",
-            },
-        ],
+        effect: "allow",
+        action: "users.delete",
+        target: "users:101",
     },
 ];
 
 const allowDeleteAnyUser: Policy = [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "users.delete",
-                target: "users:*",
-            },
-        ],
+        effect: "allow",
+        action: "users.delete",
+        target: "users:*",
     },
 ];
 
 const allowUserGetAll: Policy = [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "users.read",
-                target: "users:*",
-            },
-        ],
+        effect: "allow",
+        action: "users.read",
+        target: "users:*",
     },
 ];
 
 
 const allowSingleUserRead: Policy = [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "users.read",
-                target: "users:101",
-            },
-        ],
+        effect: "allow",
+        action: "users.read",
+        target: "users:101",
     },
 ];
 
@@ -217,23 +185,19 @@ describe("Authorize middleware (additional scenarios)", () => {
     it("should allow multiple actions if defined in one policy", async () => {
         const multiActionPolicy: Policy = [
             {
-                flow: [
-                    {
-                        effect: "allow",
-                        action: "users.read",
-                        target: "users:*",
-                    },
-                    {
-                        effect: "deny",
-                        action: "invoice.read",
-                        target: "invoice:*",
-                    },
-                    {
-                        effect: "allow",
-                        action: "invoice.update",
-                        target: "invoice:123",
-                    },
-                ],
+                effect: "allow",
+                action: "users.read",
+                target: "users:*",
+            },
+            {
+                effect: "deny",
+                action: "invoice.read",
+                target: "invoice:*",
+            },
+            {
+                effect: "allow",
+                action: "invoice.update",
+                target: "invoice:123",
             },
         ];
         const app = makeApp(multiActionPolicy);

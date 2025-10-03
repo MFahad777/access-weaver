@@ -9,18 +9,15 @@ export function evaluateFlow(
     let decision: "allow" | "deny"  = "deny";
 
     for (const policy of policies) {
-        for (const rule of policy.flow) {
+        if (policy.action !== ctx.action) continue;
 
-            if (rule.action !== ctx.action) continue;
+        if (!matchTarget(policy.target, ctx.target)) continue;
 
-            if (!matchTarget(rule.target, ctx.target)) continue;
+        if (policy.when && !evaluateConditions(policy.when, ctx)) continue;
 
-            if (rule.when && !evaluateConditions(rule.when, ctx)) continue;
+        if (policy.effect === "deny") return "deny";
 
-            if (rule.effect === "deny") return "deny";
-
-            decision = "allow";
-        }
+        decision = "allow";
     }
 
     return decision;

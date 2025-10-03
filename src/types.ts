@@ -16,7 +16,7 @@ export interface FlowRule {
     };
 }
 
-export type Policy = { flow: FlowRule[] }[]
+export type Policy = FlowRule[]
 
 export interface EvaluationContext {
     user: any;

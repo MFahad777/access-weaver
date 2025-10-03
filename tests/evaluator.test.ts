@@ -12,16 +12,12 @@ describe("evaluateFlow", () => {
     test("should allow when rule matches and conditions satisfied", () => {
         const policies: Policy = [
             {
-                flow: [
-                    {
-                        effect: "allow",
-                        action: "invoice.approve",
-                        target: "invoice:*",
-                        when: {
-                            all: [{field: "context.amount", operator: "lte", value: 5000}]
-                        }
-                    }
-                ]
+                effect: "allow",
+                action: "invoice.approve",
+                target: "invoice:*",
+                when: {
+                    all: [{field: "context.amount", operator: "lte", value: 5000}]
+                }
             }
         ];
 
@@ -32,16 +28,12 @@ describe("evaluateFlow", () => {
     test("should deny when condition not satisfied", () => {
         const policies: Policy = [
             {
-                flow: [
-                    {
-                        effect: "allow",
-                        action: "invoice.approve",
-                        target: "invoice:*",
-                        when: {
-                            all: [{field: "context.amount", operator: "lte", value: 1000}]
-                        }
-                    }
-                ]
+                effect: "allow",
+                action: "invoice.approve",
+                target: "invoice:*",
+                when: {
+                    all: [{field: "context.amount", operator: "lte", value: 1000}]
+                }
             }
         ];
 
@@ -52,13 +44,9 @@ describe("evaluateFlow", () => {
     test("should deny when explicit deny exists", () => {
         const policies: Policy = [
             {
-                flow: [
-                    {
-                        effect: "deny",
-                        action: "invoice.approve",
-                        target: "invoice:*"
-                    }
-                ]
+                effect: "deny",
+                action: "invoice.approve",
+                target: "invoice:*"
             }
         ];
 
@@ -69,19 +57,15 @@ describe("evaluateFlow", () => {
     test("should allow when OR condition satisfied", () => {
         const policies: Policy = [
             {
-                flow: [
-                    {
-                        effect: "allow",
-                        action: "invoice.approve",
-                        target: "invoice:*",
-                        when: {
-                            any: [
-                                {field: "context.amount", operator: "lte", value: 1000},
-                                {field: "context.invoiceId", operator: "eq", value: "inv-101"}
-                            ]
-                        }
-                    }
-                ]
+                effect: "allow",
+                action: "invoice.approve",
+                target: "invoice:*",
+                when: {
+                    any: [
+                        {field: "context.amount", operator: "lte", value: 1000},
+                        {field: "context.invoiceId", operator: "eq", value: "inv-101"}
+                    ]
+                }
             }
         ];
 
@@ -92,13 +76,9 @@ describe("evaluateFlow", () => {
     test("should deny if no flow match", () => {
         const policies: Policy = [
             {
-                flow: [
-                    {
-                        effect: "allow",
-                        action: "user.delete",
-                        target: "user:*"
-                    }
-                ]
+                effect: "allow",
+                action: "user.delete",
+                target: "user:*"
             }
         ];
 
@@ -109,25 +89,17 @@ describe("evaluateFlow", () => {
     test("should handle multiple policies", () => {
         const policies: Policy = [
             {
-                flow: [
-                    {
-                        effect: "allow",
-                        action: "invoice.approve",
-                        target: "invoice:*",
-                        when: {
-                            all: [{field: "context.amount", operator: "lte", value: 5000}]
-                        }
-                    }
-                ]
+                effect: "allow",
+                action: "invoice.approve",
+                target: "invoice:*",
+                when: {
+                    all: [{field: "context.amount", operator: "lte", value: 5000}]
+                }
             },
             {
-                flow: [
-                    {
-                        effect: "deny",
-                        action: "invoice.approve",
-                        target: "invoice:inv-999" // doesn't match current target
-                    }
-                ]
+                effect: "deny",
+                action: "invoice.approve",
+                target: "invoice:inv-999" // doesn't match current target
             }
         ];
 

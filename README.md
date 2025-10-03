@@ -32,25 +32,17 @@ Policies are collections of **flow rules**:
 ```javascript
 const allowInvoiceRead = [
     {
-        flow: [
-            {
-                effect: "allow",
-                action: "invoice.read",
-                target: "invoice:*",
-            },
-        ],
+        effect: "allow",
+        action: "invoice.read",
+        target: "invoice:*",
     },
 ];
 
 const denyInvoiceRead = [
     {
-        flow: [
-            {
-                effect: "deny",
-                action: "invoice.read",
-                target: "invoice:*",
-            },
-        ],
+        effect: "deny",
+        action: "invoice.read",
+        target: "invoice:*",
     },
 ];
 ```
